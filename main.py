@@ -18,11 +18,11 @@ try:
     get_body = os.environ.get('GET_BODY')
 
     if all(v is None for v in [search_type, vendor, city, depth, get_body]):
-        print('search_type: ' + search_type)
-        print('vendor: ' + vendor)
-        print('city: ' + city)
-        print('depth: ' + depth)
-        print('get_body: ' + get_body)
+        print('search_type: ' + v is None for v in search_type)
+        print('vendor: ' + v is None for v in vendor)
+        print('city: ' + v is None for v in city)
+        print('depth: ' + v is None for v in depth)
+        print('get_body: ' + v is None for v in get_body)
         print('Necessary environment variables missing... Clean exit')
         exit(0)
     else:
