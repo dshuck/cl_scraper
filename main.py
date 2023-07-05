@@ -3,9 +3,15 @@ import pandas as pd
 from src.search import CraigSearch
 
 try:
-    if os.environ.get('ENV') in ['dev', 'local']:
-        from dotenv import load_dotenv
-        load_dotenv()
+#    if os.environ.get('ENV') in ['dev', 'local']:
+    from dotenv import load_dotenv
+    # Get the path to the directory this file is in
+    BASEDIR = os.path.abspath(os.path.dirname(__file__))
+    ENVPATH = BASEDIR + '/src/config/.env'
+    print(ENVPATH)
+    # Connect the path with your '.env' file name
+    load_dotenv(ENVPATH)
+
 
     # get search params from environment variables
     search_type = os.environ.get('SEARCH_TYPE')
@@ -18,11 +24,12 @@ try:
     get_body = os.environ.get('GET_BODY')
 
     if all(v is None for v in [search_type, vendor, city, depth, get_body]):
-        print('search_type: ' + type(search_type))
-        print('vendor: ' + type(vendor))
-        print('city: ' + type(city))
-        print('depth: ' + type(depth))
-        print('get_body: ' + type(get_body))
+        print(search_type)
+        print(vendor)
+        print(city)
+        print(depth)
+        print(get_body)
+        print(os.environ.get('SEARCH_TYPE'))
         print('Necessary environment variables missing... Clean exit')
         exit(0)
     else:
